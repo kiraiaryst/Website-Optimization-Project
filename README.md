@@ -1,6 +1,7 @@
 # Website Optimization
 
 To view the website live, open http://kiraiaryst.github.io/.
+To see optimized version of the code, open Website-Optimization-Project/dist/views/.
 
 ## Optimizing PageSpeed Score for index.html
 
