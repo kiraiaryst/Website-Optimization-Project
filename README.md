@@ -78,6 +78,11 @@ function updatePositions() {
 
     }
 ```
+
+#### CSS
+Added the `-webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
+backface-visibility: hidden;` property to css to define the visibility of the element.
+
 #### *Optimized Animation*
 Added `requestAnimationFrame` for `updatePositions` for single reflow and repaint.
 Telling the browser that I wish to perform an animation and request that the browser call a specified function to update an animation before the next repaint.
