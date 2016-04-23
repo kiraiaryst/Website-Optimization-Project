@@ -56,7 +56,7 @@ Made necessary changes in the CSS file (`.mover` property changed to width: 100p
 
  * Moved the calculation of `document.body.scrollTop / 1250` outside of the loop.
  * Changed `document.querySelectorAll()` to `getElementsByClassName` for faster access of the elements.
- * Used the items.length approach to avoid hardcoding the number of iterations.
+ * Used the `items.length` approach to avoid hardcoding the number of iterations.
 
 ```js
 // Moves the sliding background pizzas based on scroll position
@@ -95,18 +95,20 @@ window.addEventListener('scroll', function() {
 * Moved `var dx` out of the for loop and selected only the first `.randomPizzaContainer` element in the document (by using `querySelector` instead of `querySelectorAll`).
 * Moved var newwidth out of the loop and selected only the first `.randomPizzaContainer` element in the document (by using `querySelector` instead of `querySelectorAll`).
 * Created `var changingPizzas` to store all the `.randomPizzaContainer` elements in the document.
+* Cached the DOM call into a new variable `var domAccess`.
 * Applied the reverse for loop.
 
 ```js
 function changePizzaSizes(size) {
-  	var dx = determineDx(document.querySelector(".randomPizzaContainer"), size);
-  	//moved the dx out of the for loop
-    var newwidth = (document.querySelector(".randomPizzaContainer").offsetWidth + dx) + 'px';
-  // Selects all the .randomPizzaContainer elements in the DOM
-    var changingPizzas = document.getElementsByClassName("randomPizzaContainer");
-    //declared document.getElementsByClassName("randomPizzaContainer") in a separate variable
-    for (var i = changingPizzas.length; i--;) {
-      changingPizzas[i].style.width = newwidth;
+        var domAccess = document.querySelector(".randomPizzaContainer");
+        //Cached the DOM call into a variable.
+        var dx = determineDx(domAccess, size);
+        //moved the dx out of the for loop
+        var newwidth = (domAccess.offsetWidth + dx) + 'px';
+        var changingPizzas = document.getElementsByClassName("randomPizzaContainer");
+        //declared document.getElementsByClassName("randomPizzaContainer") in a separate variable
+        for (var i = changingPizzas.length; i--;) {
+            changingPizzas[i].style.width = newwidth;
+        }
     }
-  }
 ```
