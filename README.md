@@ -56,26 +56,27 @@ Made necessary changes in the CSS file (`.mover` property changed to width: 100p
 
  * Moved the calculation of `document.body.scrollTop / 1250` outside of the loop.
  * Changed `document.querySelectorAll()` to `getElementsByClassName` for faster access of the elements.
+ * Used the items.length approach to avoid hardcoding the number of iterations.
 
 ```js
 // Moves the sliding background pizzas based on scroll position
-
 function updatePositions() {
-  frame++;
-  window.performance.mark("mark_start_frame");
-  //changed .querySelectorAll to getElementsByClassName
-  var items = document.getElementsByClassName('mover');
-  //Declared var phase out of the loop, took "document.body.scrollTop / 1250" to a separate variable.
-  var phase;
-  var count = 5;
-  var scrollT = document.body.scrollTop / 1250;
-  for (var i = 31; i--;)
-  //testing the for loop in reverse for faster code
-  {
-    var phase = Math.sin(scrollT + (i % count));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    frame++;
+    window.performance.mark("mark_start_frame");
+    //changed .querySelectorAll to getElementsByClassName
+    var items = document.getElementsByClassName('mover');
+    //Declared var phase out of the loop, took "document.body.scrollTop / 1250" to a separate variable.
+    var phase;
+    var count = 5;
+    var scrollT = document.body.scrollTop / 1250;
+    for (var i = items.length; i--;)
+    //Used the .length approach to avoid hardcoding the number of iterations.
+    //testing the for loop in reverse for faster code 
+    {
+        var phase = Math.sin(scrollT + (i % count));
+        items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
 
-  }
+    }
 ```
 #### *Optimized Animation*
 Added `requestAnimationFrame` for `updatePositions` for single reflow and repaint.
