@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
 ```
 
 #### *Reduced Browser Paint Events*
-Removed the `elem.style.height` and `elem.style.width` from `document.addEventListener`, resized and used the new pizza image 100px x 100px to prevent the browser from resizing it. 
-Made necessary changes in the CSS file (`.mover` property changed to width: 100px;).
+Removed the `elem.style.height` and `elem.style.width` from `document.addEventListener`, resized and used the new pizza image 73px x 73px to prevent the browser from resizing it. 
+Made necessary changes in the CSS file (`.mover` property changed to width: 73px;).
 
 
 #### *Optimized the updatePositions function loops.*
