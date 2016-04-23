@@ -79,7 +79,7 @@ function updatePositions() {
     }
 ```
 
-#### CSS
+#### *CSS*
 Added the `-webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
 backface-visibility: hidden;` property to css to define the visibility of the element.
 
